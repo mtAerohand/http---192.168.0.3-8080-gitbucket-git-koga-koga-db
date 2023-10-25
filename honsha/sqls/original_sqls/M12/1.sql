@@ -1,0 +1,6 @@
+﻿-- SQL_GET_ALL_COUNT
+SELECT CAST(COUNT(得意先コード) AS INT) FROM M_得意先担当者
+-- SQL_GET_ALL_WHERE_CLAUSE
+WHERE 得意先コード = ?
+
+

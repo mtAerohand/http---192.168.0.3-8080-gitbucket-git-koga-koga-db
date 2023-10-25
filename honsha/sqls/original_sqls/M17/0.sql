@@ -1,0 +1,4 @@
+﻿-- SQL_PLACES
+SELECT CASE WHEN EXISTS(SELECT * FROM M_納入場所 WHERE 得意先コード = ? AND 納入場所コード = ?) THEN 1 ELSE 0 END AS 判定
+
+

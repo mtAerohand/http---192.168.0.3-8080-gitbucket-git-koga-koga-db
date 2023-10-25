@@ -1,0 +1,6 @@
+﻿-- SQL_GET_ALL_COUNT
+SELECT CAST(COUNT(a.品番) AS INT) FROM M_梱包 a
+    -- SQL_GET_ALL_WHERE_CLAUSE
+    WHERE a.品番 LIKE ?
+
+

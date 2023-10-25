@@ -1,0 +1,4 @@
+﻿-- SQL_CHECK_FOR_DUPLICATE_ORDER_NUMBER
+SELECT CAST(COUNT(管理No) AS INT) AS 件数 FROM T_受注 WHERE 受注区分 = ? AND 受注番号 = ? AND 枝番 = ?
+
+

@@ -1,0 +1,2 @@
+-- SQL_REPORT
+SELECT a.management_no ,a.partial_delivery_no ,b.incoming_order_no ,b.part_no ,b.engineering_change_no ,b.part_name ,a.prospected_delivery_quantity ,a.response_DATE ,a.fax_remarks ,a.version_no FROM t_deadline_responses AS a INNER JOIN t_incoming_orders AS b ON b.management_no = a.management_no WHERE a.is_created_fax = true AND CAST(b.customer_code AS INT) = ? AND CAST(a.manager_code AS INT) = ? AND a.customer_manager_name = ? ORDER BY a.response_DATE, b.incoming_order_no

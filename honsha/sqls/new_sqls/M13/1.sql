@@ -1,0 +1,6 @@
+-- SQL_GET_ALL_COUNT
+SELECT CAST(COUNT(supplier_code) AS INT) FROM m_suppliers
+-- SQL_GET_ALL_WHERE_CLAUSE
+WHERE type = ?
+
+

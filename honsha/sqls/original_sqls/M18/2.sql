@@ -1,0 +1,6 @@
+﻿-- SQL_GET_ALL_COUNT
+SELECT CAST(COUNT(得意先コード) AS INT) FROM M_次工程
+-- SQL_GET_ALL_WHERE_CLAUSE
+WHERE 得意先コード = ?
+
+

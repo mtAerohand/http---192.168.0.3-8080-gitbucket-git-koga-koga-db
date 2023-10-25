@@ -1,0 +1,4 @@
+-- SQL_NOUHINSYO
+SELECT a.seq_no ,a.deal_code ,CASE WHEN a.deal_type = '1' THEN COALESCE(b.zip_code_1,'') ELSE COALESCE(c.zip_code_1,'') END AS zip_code_1 ,CASE WHEN a.deal_type = '1' THEN COALESCE(b.zip_code_2,'') ELSE COALESCE(c.zip_code_2,'') END AS zip_code_2 ,CASE WHEN a.deal_type = '1' THEN COALESCE(b.address_1,'') ELSE COALESCE(c.address_1,'') END AS address_1 ,CASE WHEN a.deal_type = '1' THEN COALESCE(b.address_2,'') ELSE COALESCE(c.address_2,'') END AS address_2 ,CASE WHEN a.deal_type = '1' THEN COALESCE(b.customer_name,'') ELSE COALESCE(c.supplier_name,'') END AS 取引先名 ,a.sales_DATE ,a.part_no ,a.engineering_change_no ,a.part_name ,a.quantity ,a.unit_price ,a.price ,a.remarks FROM t_sales_options AS a LEFT OUTER JOIN m_customers AS b ON b.customer_code = a.deal_code LEFT OUTER JOIN m_suppliers AS c ON c.supplier_code = a.deal_code WHERE a.seq_no = ?
+
+

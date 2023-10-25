@@ -1,0 +1,8 @@
+﻿-- SQL_GETALL_COUNT
+SELECT CAST(COUNT(SeqNo) AS INT) FROM T_仕入 AS a LEFT OUTER JOIN M_作業区仕入先 AS b ON b.作業区コード = a.仕入先コード WHERE a.取引区分 = '2'
+-- SQL_GETALL_WHERE_HENPINBI
+AND a.取引日 BETWEEN CAST(? as DATE) AND CAST(? as DATE)
+    -- SQL_GETALL_WHERE_HENPINSAKI
+    AND a.仕入先コード = ?
+
+

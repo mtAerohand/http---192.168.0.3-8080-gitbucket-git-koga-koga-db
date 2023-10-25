@@ -1,0 +1,4 @@
+﻿-- SQL_PLACES
+SELECT CASE WHEN EXISTS(SELECT * FROM M_納入バケット WHERE 請求元 = ? AND 次工程コード = ?) THEN 1 ELSE 0 END AS 判定
+
+

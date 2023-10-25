@@ -1,0 +1,4 @@
+-- SQL_GET_ORDERPLACED
+SELECT a.placing_order_no ,a.management_no ,a.process_sort_no ,b.incoming_order_no ,b.branch_no ,b.part_no ,b.engineering_change_no ,b.part_name ,c.supplier_name ,d.process_name ,a.placing_order_DATE ,a.deadline ,a.placing_order_quantity ,a.unit_price ,CAST(trunc(a.unit_price * a.placing_order_quantity ,0) as BIGINT) AS price ,a.final_process_type ,CASE WHEN e.manufacture_cost_type = true OR e.material_cost_type = true THEN 1 ELSE 0 END AS unit_price区分 FROM t_placing_orders AS a INNER JOIN t_incoming_orders AS b ON b.management_no = a.management_no LEFT OUTER JOIN m_suppliers AS c ON c.supplier_code = a.supplier_code LEFT OUTER JOIN m_processes AS d ON d.process_code = a.process_code INNER JOIN t_production_plan_details AS e ON e.management_no = a.management_no AND e.process_sort_no = a.process_sort_no WHERE a.placing_order_no = CAST(? as INT) AND NOT EXISTS (SELECT * FROM t_process_acceptances WHERE placing_order_no = a.placing_order_no)
+
+

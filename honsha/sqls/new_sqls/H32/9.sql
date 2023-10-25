@@ -1,0 +1,4 @@
+-- SQL_GET_REQUEST2
+SELECT a.management_no ,a.partial_delivery_no ,a.process_sort_no ,a.requested_delivery_DATE ,a.requested_delivery_quantity ,a.has_response_request ,a.demand_DATE ,a.response_deadline ,a.response_DATE ,a.request_report_type ,a.contact_method_type ,a.supplier_code ,a.supplier_manager_code ,COALESCE(b.manager_name,'') AS supplier_manager_name ,COALESCE(b.mail,'') AS mail ,a.supplier_manager_name ,a.manager_code AS 連絡者コード ,COALESCE(c.employee_name,'') AS 連絡者名 ,a.comment FROM t_deadline_response_requests AS a LEFT OUTER JOIN m_supplier_managers AS b ON b.supplier_code = a.supplier_code AND b.manager_code = a.supplier_manager_code LEFT OUTER JOIN m_employees AS c ON c.employee_code = a.manager_code WHERE a.management_no = CAST(? as INT) ORDER BY a.partial_delivery_no, a.process_sort_no
+
+

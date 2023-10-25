@@ -1,0 +1,4 @@
+﻿-- SQL_EXISTS_SELECT
+SELECT CASE WHEN EXISTS(SELECT * FROM T_売上返品 WHERE 得意先コード = ? AND 品番 = ? AND 設変番号 = ? AND 返品日 = CAST(? as DATE) %s) THEN 1 ELSE 0 END AS 判定
+    -- SQL_EXISTS_WHERE_UPDATE(SQL_EXISTS_SELECTの%sに入る/入らない)
+    AND SeqNo <> CAST(? AS INT)

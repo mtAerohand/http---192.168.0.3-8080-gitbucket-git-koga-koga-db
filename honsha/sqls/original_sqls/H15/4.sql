@@ -1,0 +1,2 @@
+﻿-- SQL_REPORT_SHIRE_HENPIN
+SELECT a.仕入先コード ,COALESCE(b.作業区名,'') AS 作業区名 ,CASE WHEN a.取引分類 = '1' THEN a.材質名 ELSE a.品番 END AS 品番 ,CASE WHEN a.取引分類 = '1' THEN '' ELSE a.設変番号 END AS 設変番号 ,CASE WHEN a.取引分類 = '1' THEN a.形状 ELSE a.品名 END AS 品名 ,CASE WHEN a.取引分類 = '1' THEN a.重量 ELSE a.数量 END AS 数量 ,CASE WHEN a.取引分類 = '1' THEN CASE WHEN a.材料単位 = '1' THEN '㎏' ELSE '本' END ELSE '' END AS 単位 ,a.単価 ,- a.金額 AS 金額 ,a.備考 AS 備考1 ,'返品日：' || TO_CHAR(a.取引日, 'YYYY/MM/DD') AS 備考2 FROM T_仕入 AS a LEFT OUTER JOIN M_作業区仕入先 AS b ON b.作業区コード = a.仕入先コード WHERE SeqNo = CAST(? AS INT)

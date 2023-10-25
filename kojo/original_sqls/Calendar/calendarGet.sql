@@ -1,0 +1,3 @@
+GET_ALL_BY_DATE =
+   SELECT 非稼働日 FROM V_非稼働日 WHERE 非稼働日 BETWEEN ? AND ? ORDER BY 非稼働日;
+  

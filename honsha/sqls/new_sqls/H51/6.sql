@@ -1,0 +1,4 @@
+-- SQL_SHAPE_DATA
+SELECT material_shape_code,material_shape_name,has_shape_increase_rate,shape_increase_rate FROM m_material_shapes WHERE CURRENT_DATE BETWEEN valid_start_DATE AND valid_end_DATE ORDER BY sort_no,material_shape_code
+
+

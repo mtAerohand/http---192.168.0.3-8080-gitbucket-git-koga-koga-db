@@ -1,0 +1,4 @@
+-- SQL_DELETE
+DELETE FROM m_calendars WHERE CAST(DATE_PART('YEAR', non_operate_DATE) AS VARCHAR) = ? AND CAST(DATE_PART('MONTH', non_operate_DATE) AS VARCHAR) = ?
+
+

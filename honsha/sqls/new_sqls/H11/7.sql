@@ -1,0 +1,4 @@
+-- SQL_CHECK_INSPECTION_SHIPMENT_AccEPTED
+SELECT CASE WHEN EXISTS(SELECT * FROM t_test_and_ship_requests WHERE management_no = ?) THEN 1 ELSE 0 END AS 判定
+
+

@@ -1,0 +1,4 @@
+﻿-- SQL_GET_SUPPLIER
+SELECT a.管理No ,COALESCE(b.分納No,1) AS 分納No ,a.工程順序No ,a.作業区コード ,COALESCE(c.作業区略称,'') AS 作業区名 ,a.工程コード ,COALESCE(d.工程略称,'') AS 工程名 ,a.納期 ,b.督促日 ,b.希望納入日 ,b.希望納入数 ,b.回答日 ,b.受入日 ,b.受入数 ,b.受入形態 FROM T_生産計画詳細 AS a LEFT OUTER JOIN ( SELECT CASE WHEN x.管理No IS NOT NULL THEN x.管理No ELSE y.管理No END AS 管理No ,CASE WHEN x.工程順序No IS NOT NULL THEN x.工程順序No ELSE y.工程順序No END AS 工程順序No ,CASE WHEN x.分納No IS NOT NULL THEN x.分納No ELSE y.分納No END AS 分納No ,x.督促日 ,x.希望納入日 ,x.希望納入数 ,x.回答日 ,y.受入日 ,y.受入数 ,CASE COALESCE(y.受入形態区分,'') WHEN '1' THEN '完納' WHEN '2' THEN '打切り' WHEN '3' THEN '分納' ELSE '' END AS 受入形態 FROM T_納期回答依頼 AS x FULL OUTER JOIN T_工程受入 AS y ON y.管理No = x.管理No AND y.工程順序No = x.工程順序No AND y.分納No = x.分納No ) AS b ON b.管理No = a.管理No AND b.工程順序No = a.工程順序No LEFT OUTER JOIN M_作業区仕入先 AS c ON c.作業区コード = a.作業区コード LEFT OUTER JOIN M_工程 AS d ON d.工程コード = a.工程コード WHERE a.管理No = CAST(? as INT) ORDER BY a.管理No, a.工程順序No, 分納No
+
+

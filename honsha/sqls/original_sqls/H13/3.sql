@@ -1,0 +1,2 @@
+﻿-- SQL_GET_PRECEDE
+SELECT a.管理No ,a.品番 ,a.設変番号 ,a.品名 ,a.受注日 ,COALESCE(b.受注番号符号,'') AS 受注番号符号 ,CASE WHEN b.登録日 IS NULL THEN TO_CHAR(CURRENT_TIMESTAMP, 'YYMMDD') || '-XXX' ELSE TO_CHAR(b.登録日, 'YYMMDD') || '-XXX' END AS 受注番号固定部 ,a.担当者コード ,COALESCE(c.社員名,'') AS 担当者名 ,b.分納No ,b.納期 ,b.生産数 ,b.督促区分 ,b.備考 ,b.登録日 FROM T_受注 AS a LEFT OUTER JOIN T_先行手配 AS b ON b.受注日 = a.受注日 AND b.品番 = a.品番 AND b.設変番号 = a.設変番号 LEFT OUTER JOIN M_社員 AS c ON c.社員コード = a.担当者コード WHERE a.管理No = CAST(? as INT) ORDER BY b.分納No

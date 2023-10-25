@@ -1,0 +1,4 @@
+﻿-- SQL_GET_PARTS_BY_ORDER
+SELECT DISTINCT 品番 FROM T_受注 WHERE 受注番号 &@ ? AND LENGTH(受注番号) = LENGTH(?)
+
+

@@ -1,0 +1,4 @@
+﻿-- SQL_GET_ALL_COUNT
+SELECT CAST(COUNT(a.品番) AS INT) FROM M_部品 a
+
+

@@ -1,0 +1,6 @@
+﻿-- SQL_GET_ALL_COUNT
+SELECT CAST(COUNT(材料形状コード) AS INT) FROM M_材料形状
+    -- SQL_GET_ALL_WHERE_CLAUSE
+    WHERE 材料形状名 LIKE ?
+
+

@@ -1,0 +1,4 @@
+-- SQL_ADD_CHECK
+SELECT CASE WHEN EXISTS(SELECT * FROM m_supplier_managers WHERE user_id = ?) THEN 1 ELSE 0 END AS 判定
+
+

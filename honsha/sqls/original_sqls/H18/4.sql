@@ -1,0 +1,4 @@
+﻿-- SQL_GET_ACCEPT
+SELECT a.管理No ,a.受注番号 ,a.枝番 ,a.品番 ,a.設変番号 ,COALESCE(g.生産数,0) AS 生産数 ,COALESCE(e.作業区略称,'') AS 作業区名 ,d.受入日 ,CASE WHEN g.生産数 IS NULL THEN 0 ELSE 1 END AS 依頼中判定 FROM T_受注 AS a INNER JOIN T_発注 AS b ON b.管理No = a.管理No AND b.最終工程区分 = true INNER JOIN ( SELECT 管理No, 工程順序No, MAX(分納No) AS 分納No FROM T_工程受入 GROUP BY 管理No, 工程順序No ) AS c ON c.管理No = b.管理No AND c.工程順序No = b.工程順序No INNER JOIN T_工程受入 AS d ON d.管理No = c.管理No AND d.工程順序No = c.工程順序No AND d.分納No = c.分納No LEFT OUTER JOIN ( SELECT 管理No, MAX(分納No) AS 分納No FROM T_検査出荷依頼 GROUP BY 管理No ) AS f ON f.管理No = a.管理No LEFT OUTER JOIN ( SELECT 管理No, 分納No, 生産数 FROM T_検査出荷依頼 WHERE 検査区分 = false OR (検査区分 = true AND 検査結果区分 = '0') ) AS g ON g.管理No = f.管理No AND g.分納No = f.分納No LEFT OUTER JOIN M_作業区仕入先 AS e ON e.作業区コード = b.作業区コード WHERE a.受注区分 IN ('1','4') AND a.受注番号 &@ ? AND LENGTH(a.受注番号) = LENGTH(?) AND a.枝番 = ?
+
+

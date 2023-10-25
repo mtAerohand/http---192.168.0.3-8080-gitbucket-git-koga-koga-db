@@ -1,0 +1,6 @@
+SELECT Key3
+,値
+FROM M_パラメータ
+WHERE Key1 = 10
+AND Key2 = 'M27'
+ORDER BY Key3

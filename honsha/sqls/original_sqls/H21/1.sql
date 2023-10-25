@@ -1,0 +1,4 @@
+﻿-- SQL_SMC_JUDGE
+SELECT CASE WHEN 得意先コード = '1' THEN 1 ELSE 0 END AS 判定 FROM T_受注 WHERE 管理No = CAST(? as INT)
+
+

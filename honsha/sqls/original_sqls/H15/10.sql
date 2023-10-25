@@ -1,0 +1,4 @@
+﻿-- H15/1464
+DELETE FROM T_発注 WHERE 管理No = ?
+
+

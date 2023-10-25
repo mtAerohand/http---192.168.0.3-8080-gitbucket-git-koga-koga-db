@@ -1,0 +1,4 @@
+﻿-- SQL_DELETE
+DELETE FROM M_突切幅;
+
+

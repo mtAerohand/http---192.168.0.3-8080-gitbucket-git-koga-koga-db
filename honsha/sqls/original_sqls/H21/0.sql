@@ -1,0 +1,4 @@
+﻿-- SQL_NOUHINSYO
+SELECT a.管理No,a.分納No,b.得意先コード,COALESCE(c.郵便番号1,'') AS 郵便番号1,COALESCE(c.郵便番号2,'') AS 郵便番号2,COALESCE(c.住所1,'') AS 住所1,COALESCE(c.住所2,'') AS 住所2,COALESCE(c.得意先名,'') AS 得意先名,b.受注番号,b.受注日,b.納期,a.納入日,CASE d.出荷便区分 WHEN '1' THEN '赤帽便' WHEN '2' THEN 'ヤマト便' WHEN '3' THEN '佐川急便' WHEN '4' THEN '営業届け' WHEN '5' THEN 'その他' ELSE '' END AS 出荷便,CASE WHEN COALESCE(c.締日区分,false) = true THEN '末日' ELSE COALESCE(c.締日,'') || '日' END AS 締日 ,b.品番,b.設変番号,b.品名,b.受注数,a.依頼数 AS 納入数,b.単位,CASE a.納入形態区分 WHEN '1' THEN '完納' WHEN '2' THEN '打切り' WHEN '3' THEN '分納' ELSE '過剰納入' END AS 納入形態,a.単価,a.金額,d.納入場所名,a.備考1,a.備考2,e.個数,e.梱包数 FROM T_売上 AS a INNER JOIN T_受注 AS b ON b.管理No = a.管理No LEFT OUTER JOIN M_得意先 AS c ON c.得意先コード = b.得意先コード INNER JOIN T_検査出荷依頼 AS d ON d.管理No = a.管理No AND d.分納No = a.分納No INNER JOIN T_売上詳細 AS e ON e.管理No = a.管理No AND e.分納No = a.分納No WHERE a.管理No = ? AND a.分納No = ? ORDER BY e.SeqNo
+
+

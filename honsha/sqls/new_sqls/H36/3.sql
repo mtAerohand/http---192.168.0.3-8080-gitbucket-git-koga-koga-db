@@ -1,0 +1,4 @@
+-- SQL_GET_SELECT
+SELECT a.seq_no ,a.drawing_type ,a.customer_code ,COALESCE(b.customer_name,'') AS customer_name ,a.notice_DATE ,a.engineering_change_management_no ,a.part_no ,a.engineering_change_no ,COALESCE(c.part_name,'') AS part_name ,a.new_engineering_change_no ,a.work_instruction_type ,a.wip_type ,a.remarks ,a.is_output ,a.requested_return_DATE ,a.version_no ,d.process_sort_no ,d.supplier_code ,COALESCE(e.supplier_abbreviation,'') AS supplier_name ,d.return_DATE ,d.version_no AS 詳細version_no FROM t_drawings AS a LEFT OUTER JOIN m_customers AS b ON b.customer_code = a.customer_code LEFT OUTER JOIN m_parts AS c ON c.part_no = a.part_no LEFT OUTER JOIN t_drawing_details AS d ON d.seq_no = a.seq_no LEFT OUTER JOIN m_suppliers AS e ON e.supplier_code = d.supplier_code WHERE a.seq_no = CAST(? as INT) ORDER BY d.process_sort_no
+
+

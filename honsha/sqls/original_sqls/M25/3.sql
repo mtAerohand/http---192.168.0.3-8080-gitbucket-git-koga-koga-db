@@ -1,0 +1,2 @@
+﻿-- SQL_GETRANGE
+SELECT 非稼働日 FROM M_カレンダー WHERE 非稼働日 BETWEEN CAST(? as DATE) AND CAST(? as DATE) ORDER BY 非稼働日

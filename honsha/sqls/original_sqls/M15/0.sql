@@ -1,0 +1,4 @@
+﻿-- SQL_GET_ALL_COUNT
+SELECT CAST(COUNT(社員コード) AS INT) FROM M_社員 AS a
+
+

@@ -1,0 +1,2 @@
+-- SQL_GET_DELIVERY_CHECK
+SELECT CASE WHEN EXISTS(SELECT * FROM t_deadline_responses WHERE management_no = ?) THEN 1 ELSE 0 END AS 判定

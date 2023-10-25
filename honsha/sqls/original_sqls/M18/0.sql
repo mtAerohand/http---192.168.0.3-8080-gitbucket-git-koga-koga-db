@@ -1,0 +1,4 @@
+﻿-- SQL_PLACES
+SELECT CASE WHEN EXISTS(SELECT * FROM M_次工程 WHERE 得意先コード = ? AND 次工程コード = ?) THEN 1 ELSE 0 END AS 判定
+
+

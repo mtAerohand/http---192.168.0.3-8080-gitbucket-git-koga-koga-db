@@ -1,0 +1,2 @@
+-- SQL_GET
+SELECT a.customer_code ,a.next_process_code ,a.next_process_name ,CASE WHEN b.biller IS NULL THEN '' ELSE b.bucket_infomation END AS 納入バケット FROM m_next_processes AS a LEFT OUTER JOIN m_delivery_buckets AS b ON b.next_process_code = a.next_process_code AND CURRENT_TIMESTAMP BETWEEN b.valid_start_DATE AND b.valid_end_DATE AND b.biller = ? WHERE CURRENT_DATE BETWEEN a.valid_start_DATE AND a.valid_end_DATE AND a.customer_code = ? AND a.next_process_code = ?

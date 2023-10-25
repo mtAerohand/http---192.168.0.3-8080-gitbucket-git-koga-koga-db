@@ -1,0 +1,4 @@
+﻿-- SQL_MULTIPLE
+SELECT CAST(値 as INT) FROM M_パラメータ WHERE Key1 = CAST(? AS INT) AND Key2 = ? AND Key3 = ?
+
+

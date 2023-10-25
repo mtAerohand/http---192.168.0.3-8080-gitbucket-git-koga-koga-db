@@ -1,0 +1,4 @@
+﻿-- SQL_GET
+SELECT 非稼働日 FROM M_カレンダー WHERE CAST(DATE_PART('YEAR', 非稼働日) AS VARCHAR) = ? AND CAST(DATE_PART('MONTH', 非稼働日) AS VARCHAR) = ? ORDER BY 非稼働日
+
+

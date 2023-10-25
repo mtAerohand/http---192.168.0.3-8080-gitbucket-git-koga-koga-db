@@ -1,0 +1,4 @@
+-- SQL_GET_PURCHASE_LIST
+SELECT a.placing_order_no ,a.supplier_code ,COALESCE(c.supplier_abbreviation,'') AS supplier_name ,a.process_code ,COALESCE(d.process_abbreviation,'') AS process_name ,a.placing_order_DATE ,a.deadline ,a.placing_order_quantity ,b.incoming_order_no ,b.branch_no FROM t_placing_orders AS a INNER JOIN t_incoming_orders AS b ON b.management_no = a.management_no LEFT OUTER JOIN m_suppliers AS c ON c.supplier_code = a.supplier_code LEFT OUTER JOIN m_processes AS d ON d.process_code = a.process_code WHERE b.part_no &@ ? AND LENGTH(b.part_no) = LENGTH(?) AND b.engineering_change_no = ? AND NOT EXISTS (SELECT * FROM t_test_and_ship_requests WHERE management_no = a.management_no AND delivery_form_type IN ('1','2','4','11','12')) ORDER BY a.placing_order_DATE DESC, a.management_no, a.process_sort_no
+
+
